@@ -1,0 +1,85 @@
+apiVersion: quarks.cloudfoundry.org/v1alpha1
+kind: BOSHDeployment
+metadata:
+  name: kubecf
+  namespace: default
+spec:
+  manifest:
+    name: cf-deployment
+    type: configmap
+  ops:
+  - name: ops-move-auctioneer
+    type: configmap
+  - name: ops-move-log-cache
+    type: configmap
+  - name: ops-move-routing-api
+    type: configmap
+  - name: ops-set-suse-buildpacks
+    type: configmap
+  - name: ops-acceptance-tests
+    type: configmap
+  - name: ops-adapter
+    type: configmap
+  - name: ops-api
+    type: configmap
+  - name: ops-app-autoscaler
+    type: configmap
+  - name: ops-auctioneer
+    type: configmap
+  - name: ops-brain-tests
+    type: configmap
+  - name: ops-cc-worker
+    type: configmap
+  - name: ops-credhub
+    type: configmap
+  - name: ops-database
+    type: configmap
+  - name: ops-diego-api
+    type: configmap
+  - name: ops-diego-cell
+    type: configmap
+  - name: ops-doppler
+    type: configmap
+  - name: ops-eirini-helm
+    type: configmap
+  - name: ops-log-api
+    type: configmap
+  - name: ops-log-cache
+    type: configmap
+  - name: ops-nats
+    type: configmap
+  - name: ops-router
+    type: configmap
+  - name: ops-routing-api
+    type: configmap
+  - name: ops-scheduler
+    type: configmap
+  - name: ops-singleton-blobstore
+    type: configmap
+  - name: ops-smoke-tests
+    type: configmap
+  - name: ops-sync-integration-tests
+    type: configmap
+  - name: ops-tcp-router
+    type: configmap
+  - name: ops-uaa
+    type: configmap
+  - name: ops-sizing
+    type: configmap
+  - name: ops-azs
+    type: configmap
+  - name: ops-addons
+    type: configmap
+  - name: ops-azs
+    type: configmap
+  - name: ops-releases
+    type: configmap
+  - name: ops-set-deployment-name
+    type: configmap
+  - name: ops-set-opensuse-stemcells
+    type: configmap
+  - name: ops-sizing
+    type: configmap
+  - name: user-provided-properties
+    type: configmap
+  vars: []
