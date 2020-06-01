@@ -1,0 +1,82 @@
+# Labels to add to all resources and selectors.
+commonLabels:
+  app.kubernetes.io/instance: kubecf
+  app.kubernetes.io/managed-by: Tiller
+  app.kubernetes.io/name: kubecf
+  app.kubernetes.io/version: v2.2.1
+  helm.sh/chart: kubecf-v2.2.1
+
+# Each entry in this list results in the creation of
+# one ConfigMap resource (it's a generator of n maps).
+configMapGenerator:
+- name: ops-diego-api
+- name: ops-doppler
+- name: ops-azs
+- name: ops-set-suse-buildpacks
+- name: ops-cc-worker
+- name: ops-set-opensuse-stemcells
+- name: ops-singleton-blobstore
+- literals:
+  - ops=
+  name: ops-brain-tests
+- literals:
+  - ops=
+  name: ops-eirini-helm
+- name: cf-deployment
+- name: ops-uaa
+- name: ops-move-log-cache
+- name: ops-move-routing-api
+- name: ops-database
+- name: ops-nats
+- name: ops-smoke-tests
+- name: ops-routing-api
+- name: ops-tcp-router
+- name: ops-addons
+- name: ops-adapter
+- name: ops-api
+- name: ops-auctioneer
+- name: ops-log-api
+- name: ops-router
+- name: ops-releases
+- name: ops-set-deployment-name
+- name: ops-move-auctioneer
+- literals:
+  - ops=
+  name: ops-acceptance-tests
+- name: ops-log-cache
+- name: ops-scheduler
+- literals:
+  - ops=
+  name: ops-app-autoscaler
+- name: ops-sizing
+- literals:
+  - ops=
+  name: user-provided-properties
+- name: ops-credhub
+- name: ops-diego-cell
+- name: ops-sync-integration-tests
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- kubecf-boshdeployment.yaml
+- kubecf-default-psp-rb.yaml
+- kubecf-default-psp-role.yaml
+- kubecf-default-psp.yaml
+- router-public-svc.yaml
+- ssh-proxy-public-svc.yaml
+- tcp-router-public-svc.yaml
+
+# Each entry in this list results in the creation of
+# one Secret resource (it's a generator of n secrets).
+secretGenerator:
+- name: var-k8s-host-url
+  type: Opaque
+- name: var-k8s-node-ca
+  type: Opaque
+- name: var-k8s-service-token
+  type: Opaque
+- name: var-k8s-service-username
+  type: Opaque
+- name: var-system-domain
+  type: Opaque

@@ -1,0 +1,44 @@
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+  name: kubecf-default
+spec:
+  allowPrivilegeEscalation: true
+  allowedCapabilities:
+  - NET_BIND_SERVICE
+  - SYS_ADMIN
+  - SYS_RESOURCE
+  defaultAllowPrivilegeEscalation: true
+  fsGroup:
+    rule: RunAsAny
+  hostPorts:
+  - max: 65535
+    min: 0
+  privileged: true
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  volumes:
+  - configMap
+  - secret
+  - emptyDir
+  - downwardAPI
+  - projected
+  - persistentVolumeClaim
+  - nfs
+  - rbd
+  - cephFS
+  - glusterfs
+  - fc
+  - iscsi
+  - cinder
+  - gcePersistentDisk
+  - awsElasticBlockStore
+  - azureDisk
+  - azureFile
+  - vsphereVolume
